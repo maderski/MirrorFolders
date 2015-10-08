@@ -1,4 +1,5 @@
-__author__ = 'Dev'
+__author__ = 'Jason Maderski'
+__date__ = '10-08-15'
 from Tkinter import *
 import tkFileDialog
 import os.path
