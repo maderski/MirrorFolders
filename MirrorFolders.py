@@ -16,12 +16,12 @@ class Folders:
     # Brings up GUI to select the source folder and stores choice in the variable sourcefolder
     def pickSourceFolder(self, root):
         self.sourcefolder = tkFileDialog.askdirectory(parent=root, title='Choose SOURCE folder')
-        print self.sourcefolder
+        # print self.sourcefolder
 
     # Brings up GUI to select the destination folder and stores choice in the variable destinationfolder
     def pickDestinationFolder(self, root):
         self.destinationfolder = tkFileDialog.askdirectory(parent=root, title='Choose DESTINATION folder')
-        print self.destinationfolder
+        # print self.destinationfolder
 
 # Batchfile related tasks are here
 class BatchFile:
@@ -56,7 +56,7 @@ class BatchFile:
                         line = re.sub('robocopy ', '', line)
                         line = re.sub('/MIR', '', line)
                         self.previousfolders = line.split()
-                        print self.previousfolders
+                        # print self.previousfolders
                 i+=1
                 inputfile.close()
             except Exception, e:
