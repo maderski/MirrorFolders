@@ -5,6 +5,7 @@ import tkFileDialog
 import os.path
 import subprocess
 import re
+import thread
 
 
 # Folder related tasks are here
@@ -121,7 +122,7 @@ class GUI:
                                  textvariable=destinationlabeltext)
         destinationLabel.pack(padx=0, pady=(50, 10))
 
-        # Button to launch windo to choose destination
+        # Button to launch window to choose destination
         destinationButton = Button(root,
                                    fg="white",
                                    bg="olive drab",
@@ -140,7 +141,7 @@ class GUI:
                            height=2,
                            width=10,
                            font="Arial 16",
-                           command=lambda: self.runButtonClicked(bf, nameofbatchfile))
+                           command=lambda: self.runButtonClicked(bf, nameofbatchfile, root))
         runButton.pack(padx=0, pady=(30, 30))
         root.mainloop()
 
@@ -157,8 +158,10 @@ class GUI:
         text.set(folders.destinationfolder)
 
     # Action for when runbutton is clicked
-    def runButtonClicked(self, batchfile, bfname):
+    def runButtonClicked(self, batchfile, bfname, root):
         batchfile.runBatchFile(bfname)
+        root.quit()
+
 
 
 # Run the program
