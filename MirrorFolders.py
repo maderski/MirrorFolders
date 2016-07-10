@@ -41,7 +41,7 @@ class BatchFile:
     def writeBatchFile(self, batchfilename, source, destination):
         outputfile = open(batchfilename, "w")
         outputfile.write("@echo off" + "\n"
-                         + "robocopy " + source + " " + destination + " " + "/MIR")
+                         + "robocopy '" + source + "' '" + destination + "' " + "/MIR")
         outputfile.close()
 
     # Reads existing batchfile if it exists and stores the source and destination directories in the variable previous
@@ -54,9 +54,7 @@ class BatchFile:
                 i=1
                 for line in inputfile:
                     if line.startswith("robocopy"):
-                        line = re.sub('robocopy ', '', line)
-                        line = re.sub('/MIR', '', line)
-                        self.previousfolders = line.split()
+			self.previousfolders = [line.split("'")[1], line.split("'")[3]]
                         # print self.previousfolders
                 i+=1
                 inputfile.close()
