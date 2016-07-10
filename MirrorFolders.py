@@ -1,5 +1,5 @@
 __author__ = 'Jason Maderski'
-__date__ = '10-08-15'
+__date__ = '10-07-16'
 from Tkinter import *
 import tkFileDialog
 import os.path
@@ -40,8 +40,8 @@ class BatchFile:
     # Creates a batch file that uses the built in windows tool robocopy
     def writeBatchFile(self, batchfilename, source, destination):
         outputfile = open(batchfilename, "w")
-        outputfile.write("@echo off" + "\n"
-                         + "robocopy '" + source + "' '" + destination + "' " + "/MIR")
+        outputfile.write('@echo off' + '\n'
+                         + 'robocopy "' + source + '" "' + destination + '" ' + '/MIR')
         outputfile.close()
 
     # Reads existing batchfile if it exists and stores the source and destination directories in the variable previous
@@ -54,7 +54,7 @@ class BatchFile:
                 i=1
                 for line in inputfile:
                     if line.startswith("robocopy"):
-			self.previousfolders = [line.split("'")[1], line.split("'")[3]]
+			self.previousfolders = [line.split('"')[1], line.split('"')[3]]
                         # print self.previousfolders
                 i+=1
                 inputfile.close()
